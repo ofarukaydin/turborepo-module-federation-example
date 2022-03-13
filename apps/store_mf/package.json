@@ -33,7 +33,6 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1",
     "config": "*",
-    "tsconfig": "*",
     "typescript": "^4.5.3"
   },
   "dependencies": {
