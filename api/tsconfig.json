@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["ES2020.Promise"],
+    "module": "commonjs",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "outDir": "./dist",
+
+    // Rules
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": false
+  },
+  "exclude": ["./dist/**/*"],
+  "include": ["./pixi-shim.d.ts"]
+}

@@ -2,7 +2,11 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
-    "composite": false,
+    "baseUrl": "../../",
+    "paths": {
+      "editor/bootstrap": ["apps/editor/src/bootstrap.tsx"]
+    },
+    "composite": true,
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
@@ -16,5 +20,8 @@
     "skipLibCheck": true,
     "strict": true
   },
+  "references": [
+    {"path": "../pixi"}, {"path": "../store"}
+  ],
   "exclude": ["node_modules"]
 }

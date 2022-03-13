@@ -1,0 +1,23 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "source": "./src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf .turbo node_modules dist package-lock.json yarn.lock tsconfig.tsbuildinfo",
+    "lint": "TIMING=1 eslint src --fix",
+    "dev": "tsc -w"
+  },
+  "devDependencies": {
+    "config": "*",
+    "tsconfig": "*",
+    "typescript": "^4.5.3"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
+    "react-redux": "^7.2.6"
+  }
+}
