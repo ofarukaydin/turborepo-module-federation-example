@@ -4,7 +4,8 @@
   "compilerOptions": {
     "baseUrl": "../../",
     "paths": {
-      "editor/bootstrap": ["apps/editor/src/bootstrap.tsx"]
+      "editor/bootstrap": ["apps/editor/src/bootstrap.tsx"],
+      "store_mf/exports": ["apps/store_mf/src/exports.ts"]
     },
     "composite": true,
     "declaration": true,
@@ -20,8 +21,6 @@
     "skipLibCheck": true,
     "strict": true
   },
-  "references": [
-    {"path": "../pixi"}, {"path": "../store"}
-  ],
+  "references": [{ "path": "../pixi" }],
   "exclude": ["node_modules"]
 }

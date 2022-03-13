@@ -45,6 +45,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         editor: 'editor@http://localhost:3001/remoteEntry.js',
+        store_mf: 'store_mf@http://localhost:3002/remoteEntry.js',
       },
       exposes: {},
       shared: {

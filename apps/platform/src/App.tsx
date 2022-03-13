@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { Button, ChakraProvider } from "@chakra-ui/react";
 import { Buttons } from "./components/buttons";
-import { render } from "editor/bootstrap";
 import ReactDOM from "react-dom";
-import { Provider, store } from "store";
+import { StoreProvider } from "store_mf/exports";
+import { render } from "editor/bootstrap";
 
 export function App() {
   const editorRef = useRef<HTMLDivElement | null>(null);
@@ -15,14 +15,14 @@ export function App() {
   }, []);
 
   return (
-    <Provider store={store}>
+    <StoreProvider>
       <ChakraProvider>
         <Buttons />
         <Suspense fallback={<div>Loading...</div>}>
           <div ref={editorRef} />
         </Suspense>
       </ChakraProvider>
-    </Provider>
+    </StoreProvider>
   );
 }
 

@@ -1,14 +1,19 @@
 import * as PIXI from 'pixi.js'
-import { getViewport } from './viewport';
+
+import { store } from 'store_mf/exports'
 
 interface PixiDraggable extends PIXI.DisplayObject {
   data: PIXI.InteractionData | null;
   dragging: boolean;
 }
 
-export const createSquare = (width: number, height: number, color: number): PIXI.Graphics => {
-  const viewport = getViewport()
-  console.log('viewport', viewport)
+export const createSquare = (width: number, height: number, color: number): PIXI.Graphics | undefined => {
+  const viewport = store.getState().viewport
+
+  if (!viewport) {
+    return
+  }
+
   const square = new PIXI.Graphics();
   square.beginFill(color);
   square.drawRect(0, 0, width, height);
@@ -24,14 +29,17 @@ export const createSquare = (width: number, height: number, color: number): PIXI
     .on('pointerupoutside', onDragEnd)
     .on('pointermove', onDragMove)
 
-  viewport.addChild(square);
-
   return square;
 }
 
 
 function onDragStart(event: PIXI.InteractionEvent) {
-  const viewport = getViewport()
+  const viewport = store.getState().viewport
+
+  if (!viewport) {
+    return
+  }
+
   const square = event.currentTarget as PixiDraggable;
 
   square.alpha = 0.5;
@@ -44,7 +52,11 @@ function onDragStart(event: PIXI.InteractionEvent) {
 }
 
 function onDragEnd(event: PIXI.InteractionEvent) {
-  const viewport = getViewport()
+  const viewport = store.getState().viewport
+
+  if (!viewport) {
+    return
+  }
   const square = event.currentTarget as PixiDraggable;
 
   square.alpha = 1;
@@ -56,7 +68,11 @@ function onDragEnd(event: PIXI.InteractionEvent) {
 }
 
 function onDragMove(event: PIXI.InteractionEvent) {
-  const viewport = getViewport()
+  const viewport = store.getState().viewport
+
+  if (!viewport) {
+    return
+  }
   const square = event.currentTarget as PixiDraggable;
 
   if (square.dragging) {
@@ -65,6 +81,5 @@ function onDragMove(event: PIXI.InteractionEvent) {
     square.y = newPosition?.y || 0;
   }
   viewport.dirty = true
-
 
 }

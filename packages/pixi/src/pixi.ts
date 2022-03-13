@@ -1,12 +1,11 @@
-import { createViewport, getViewport } from './viewport'
+import { createViewport } from './viewport'
 import * as PIXI from 'pixi.js'
-
-let renderer: PIXI.Renderer;
+import { setRenderer, store } from 'store_mf/exports'
 
 function createRenderer(ref: HTMLElement) {
   // delete Renderer.__plugins.interaction;
 
-  renderer = new PIXI.Renderer({
+  const renderer = new PIXI.Renderer({
     backgroundAlpha: 0,
     width: window.innerWidth,
     height: window.innerHeight,
@@ -20,13 +19,27 @@ function createRenderer(ref: HTMLElement) {
   renderer.view.style.position = 'fixed'
   renderer.view.style.background = 'rgba(0,0,0,.1)'
 
+  store.dispatch(setRenderer(renderer))
+
 }
 
 export function start(ref: HTMLElement) {
   createRenderer(ref)
+
+  const renderer = store.getState().renderer
+
+  if (!renderer) {
+    return
+  }
+
   createViewport(renderer)
+
   window.onresize = () => {
-    const viewport = getViewport()
+    const viewport = store.getState().viewport
+
+    if (!viewport) {
+      return
+    }
 
     renderer.resize(window.innerWidth, window.innerHeight)
     viewport.resize(window.innerWidth, window.innerHeight)
@@ -35,7 +48,11 @@ export function start(ref: HTMLElement) {
 }
 
 function update() {
-  const viewport = getViewport()
+  const viewport = store.getState().viewport
+  const renderer = store.getState().renderer
+  if (!viewport || !renderer) {
+    return
+  }
 
   if (viewport.dirty) {
     renderer.render(viewport)
@@ -45,5 +62,11 @@ function update() {
 }
 
 export function stop() {
+  const renderer = store.getState().renderer
+
+  if (!renderer) {
+    return
+  }
+
   renderer.destroy(true)
 }

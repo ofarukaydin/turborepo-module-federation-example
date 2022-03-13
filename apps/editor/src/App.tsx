@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { start } from "pixi";
-import { store } from "store";
 
 import "./index.scss";
 
@@ -17,10 +16,6 @@ export const App = () => {
     return () => stop();
   }, [ref]);
 
-  return (
-    <div className="mx-auto">
-      <div ref={ref} />
-    </div>
-  );
+  return <div ref={ref} />;
 };
 ReactDOM.render(<App />, document.getElementById("app"));

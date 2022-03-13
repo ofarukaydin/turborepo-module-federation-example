@@ -2,18 +2,15 @@
 import { Viewport } from 'pixi-viewport'
 import { createSquare } from './createSquare'
 import * as PIXI from 'pixi.js'
-import { setViewport, store } from 'store'
+import { setViewport, store } from 'store_mf/exports'
 
 const WORLD_WIDTH = 2000
 const WORLD_HEIGHT = 2000
-const BORDER = 10
-
-let viewport: Viewport;
 
 export function createViewport(renderer: PIXI.Renderer) {
     // create the viewport
     // viewport = new Viewport({    // use with modern build toolchain
-    viewport = new Viewport({
+    const viewport = new Viewport({
         // screenWidth: window.innerWidth,              // screen width used by viewport (eg, size of canvas)
         // screenHeight: window.innerHeight,            // screen height used by viewport (eg, size of canvas)
         worldWidth: WORLD_WIDTH,                        // world width used by viewport (automatically calculated based on container width)
@@ -143,8 +140,6 @@ export function createViewport(renderer: PIXI.Renderer) {
     //     noMove: false,              // zoom but do not move
     // })
 
-    border(viewport, BORDER)
-    createSquare(100, 100, 0xff0)
     // fit and center the world into the panel
     viewport.fit()
     viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2)
@@ -166,13 +161,6 @@ export function createViewport(renderer: PIXI.Renderer) {
 
     store.dispatch(setViewport(viewport))
 }
-
-function border(viewport: Viewport, border: number) {
-    const line = viewport.addChild(new PIXI.Graphics())
-    line.lineStyle(border, 0xff0000).drawRect(0, 0, viewport.worldWidth, viewport.worldHeight)
-}
-
-export const getViewport = () => viewport
 
 // export const isPointWithinRectangle = (point: Point, bounds: Rectangle): boolean => (
 //     bounds.x <= point.x && point.x <= bounds.x + bounds.width
