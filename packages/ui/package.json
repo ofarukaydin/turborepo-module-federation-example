@@ -4,6 +4,10 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules dist package-lock.json yarn.lock tsconfig.tsbuildinfo",
+    "lint": "TIMING=1 eslint src --fix"
+  },
   "devDependencies": {
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",

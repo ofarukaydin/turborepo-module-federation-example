@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "React",
-  "extends": "./base.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "target": "es6",
-    "composite": true,
+    "composite": false,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,7 +16,7 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "include": ["src"],
   "exclude": ["node_modules"]
