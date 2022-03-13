@@ -1,9 +1,9 @@
-import { Suspense, useEffect, useRef } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
-import { Topbar } from "ui";
-import ReactDOM from "react-dom";
-import { StoreProvider } from "store_mf/exports";
-import { render } from "editor/bootstrap";
+import { Suspense, useEffect, useRef } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { Topbar } from 'ui';
+import ReactDOM from 'react-dom';
+import { StoreProvider } from 'store_mf/exports';
+import { render } from 'editor/bootstrap';
 
 export function App() {
   const editorRef = useRef<HTMLDivElement | null>(null);
@@ -26,4 +26,4 @@ export function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

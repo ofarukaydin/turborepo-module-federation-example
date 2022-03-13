@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const DummyContext = require("../dummy");
+const DummyContext = require('../dummy');
 
-console.log("pixi-shim ❤️ PIXI.js");
+console.log('pixi-shim ❤️ PIXI.js');
 
 class Point {
   constructor(x = 0, y = 0) {
@@ -30,7 +30,7 @@ class Container extends Point {
   addChildAt(child, index) {
     this.children.splice(
       this.children.indexOf(child),
-      Math.max(0, Math.min(index, this.children.length))
+      Math.max(0, Math.min(index, this.children.length)),
     );
   }
   removeChild(child) {
@@ -66,7 +66,7 @@ const PIXI = {
   UPDATE_PRIORITY: {},
   Application: function () {
     this.stage = new Sprite();
-    this.view = { getContext: () => context, toDataURL: () => "" };
+    this.view = { getContext: () => context, toDataURL: () => '' };
     this.render = getObject;
   },
 };

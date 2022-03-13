@@ -1,6 +1,6 @@
-import * as PIXI from 'pixi.js'
+import * as PIXI from 'pixi.js';
 
-import { store } from 'store_mf/exports'
+import { store } from 'store_mf/exports';
 
 interface PixiDraggable extends PIXI.DisplayObject {
   data: PIXI.InteractionData | null;
@@ -8,7 +8,7 @@ interface PixiDraggable extends PIXI.DisplayObject {
 }
 
 export const createSquare = (width: number, height: number, color: number): PIXI.Graphics => {
-  const viewport = store.getState().viewport
+  const viewport = store.getState().viewport;
 
   const square = new PIXI.Graphics();
   square.beginFill(color);
@@ -23,17 +23,16 @@ export const createSquare = (width: number, height: number, color: number): PIXI
     .on('pointerdown', onDragStart)
     .on('pointerup', onDragEnd)
     .on('pointerupoutside', onDragEnd)
-    .on('pointermove', onDragMove)
+    .on('pointermove', onDragMove);
 
   return square;
-}
-
+};
 
 function onDragStart(event: PIXI.InteractionEvent) {
-  const viewport = store.getState().viewport
+  const viewport = store.getState().viewport;
 
   if (!viewport) {
-    return
+    return;
   }
 
   const square = event.currentTarget as PixiDraggable;
@@ -43,15 +42,14 @@ function onDragStart(event: PIXI.InteractionEvent) {
   square.dragging = true;
 
   viewport.drag({ pressDrag: false });
-  viewport.dirty = true
-
+  viewport.dirty = true;
 }
 
 function onDragEnd(event: PIXI.InteractionEvent) {
-  const viewport = store.getState().viewport
+  const viewport = store.getState().viewport;
 
   if (!viewport) {
-    return
+    return;
   }
   const square = event.currentTarget as PixiDraggable;
 
@@ -59,15 +57,14 @@ function onDragEnd(event: PIXI.InteractionEvent) {
   square.dragging = false;
   square.data = null;
   viewport.drag();
-  viewport.dirty = true
-
+  viewport.dirty = true;
 }
 
 function onDragMove(event: PIXI.InteractionEvent) {
-  const viewport = store.getState().viewport
+  const viewport = store.getState().viewport;
 
   if (!viewport) {
-    return
+    return;
   }
   const square = event.currentTarget as PixiDraggable;
 
@@ -76,6 +73,5 @@ function onDragMove(event: PIXI.InteractionEvent) {
     square.x = newPosition?.x || 0;
     square.y = newPosition?.y || 0;
   }
-  viewport.dirty = true
-
+  viewport.dirty = true;
 }

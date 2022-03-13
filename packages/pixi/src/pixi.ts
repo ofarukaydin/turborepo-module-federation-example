@@ -1,6 +1,6 @@
-import { createViewport } from './viewport'
-import * as PIXI from 'pixi.js'
-import { setRenderer, store } from 'store_mf/exports'
+import { createViewport } from './viewport';
+import * as PIXI from 'pixi.js';
+import { setRenderer, store } from 'store_mf/exports';
 
 function createRenderer(ref: HTMLElement) {
   // delete Renderer.__plugins.interaction;
@@ -11,65 +11,64 @@ function createRenderer(ref: HTMLElement) {
     height: window.innerHeight,
     resolution: window.devicePixelRatio,
     antialias: true,
-  })
+  });
 
   // renderer.addSystem(EventSystem as any, 'events')
 
-  ref.appendChild(renderer.view)
-  renderer.view.style.position = 'fixed'
-  renderer.view.style.background = 'rgba(82, 78, 183, 1)'
-  renderer.view.style.width = '100vw'
-  renderer.view.style.height = '100vh'
-  renderer.view.style.top = '100'
-  renderer.view.style.left = '0'
-  store.dispatch(setRenderer(renderer))
-
+  ref.appendChild(renderer.view);
+  renderer.view.style.position = 'fixed';
+  renderer.view.style.background = 'rgba(82, 78, 183, 1)';
+  renderer.view.style.width = '100vw';
+  renderer.view.style.height = '100vh';
+  renderer.view.style.top = '100';
+  renderer.view.style.left = '0';
+  store.dispatch(setRenderer(renderer));
 }
 
 export function start(ref: HTMLElement) {
-  createRenderer(ref)
+  createRenderer(ref);
 
-  const renderer = store.getState().renderer
+  const renderer = store.getState().renderer;
 
   if (!renderer) {
-    return
+    return;
   }
 
-  createViewport(renderer)
+  createViewport(renderer);
 
   window.onresize = () => {
-    const viewport = store.getState().viewport
+    const viewport = store.getState().viewport;
 
     if (!viewport) {
-      return
+      return;
     }
 
-    renderer.resize(window.innerWidth, window.innerHeight)
-    viewport.resize(window.innerWidth, window.innerHeight)
-  }
-  update()
+    renderer.resize(window.innerWidth, window.innerHeight);
+    viewport.resize(window.innerWidth, window.innerHeight);
+  };
+  update();
 }
 
 function update() {
-  const viewport = store.getState().viewport
-  const renderer = store.getState().renderer
+  const viewport = store.getState().viewport;
+  const renderer = store.getState().renderer;
   if (!viewport || !renderer) {
-    return
+    return;
   }
 
   if (viewport.dirty) {
-    renderer.render(viewport)
-    viewport.dirty = false
+    renderer.render(viewport);
+    viewport.dirty = false;
   }
-  requestAnimationFrame(() => update())
+  requestAnimationFrame(() => update());
 }
 
 export function stop() {
-  const renderer = store.getState().renderer
+  const renderer = store.getState().renderer;
 
   if (!renderer) {
-    return
+    return;
   }
 
-  renderer.destroy(true)
+  renderer.destroy(true);
 }

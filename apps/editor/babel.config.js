@@ -2,14 +2,14 @@ module.exports = function (api) {
   api.cache(true);
 
   const presets = [
-    "@babel/preset-typescript",
-    ["@babel/preset-react", { "runtime": "automatic" }],
-    "@babel/preset-env"
+    '@babel/preset-typescript',
+    ['@babel/preset-react', { runtime: 'automatic' }],
+    '@babel/preset-env',
   ];
-  const plugins = [["@babel/transform-runtime"]];
+  const plugins = [['@babel/transform-runtime']];
 
   return {
     presets,
-    plugins
+    plugins,
   };
-}
+};

@@ -1,7 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 
-import "./index.css";
+import './index.css';
 
 const App = () => (
   <div className="container">
@@ -11,4 +10,4 @@ const App = () => (
     <div>CSS: Empty CSS</div>
   </div>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

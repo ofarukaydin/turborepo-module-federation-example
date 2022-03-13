@@ -33,14 +33,14 @@ with lazy polyfill of
 ## Usage
 
 ```js
-require("pixi-shim");
+require('pixi-shim');
 ```
 
 or if your game/app is feature-heavy and it still doesn't work, you might need to add `pixi.js-legacy` too
 
 ```js
-require("pixi-shim");
-require("pixi.js-legacy");
+require('pixi-shim');
+require('pixi.js-legacy');
 ```
 
 ## Installation
@@ -54,20 +54,20 @@ $ yarn add pixi-shim
 file1.js
 
 ```javascript
-const PIXI = require("pixi-shim");
+const PIXI = require('pixi-shim');
 ```
 
 file2.js
 
 ```javascript
-const PIXI = require("pixi-shim");
+const PIXI = require('pixi-shim');
 ```
 
 server.js
 
 ```javascript
-require("./file1");
-require("./file2");
+require('./file1');
+require('./file2');
 
 // No runtime conflicts, all dependencies have been included once
 ```

@@ -1,9 +1,8 @@
-"use strict";
+'use strict';
 
-const DummyContext = require("../dummy");
+const DummyContext = require('../dummy');
 
-global.CanvasRenderingContext2D =
-  global.CanvasRenderingContext2D || DummyContext;
+global.CanvasRenderingContext2D = global.CanvasRenderingContext2D || DummyContext;
 
 global.WebGLRenderingContext = global.WebGLRenderingContext || DummyContext;
 

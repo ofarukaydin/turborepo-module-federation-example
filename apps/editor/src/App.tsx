@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
-import ReactDOM from "react-dom";
-import { start } from "pixi";
+import { useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
+import { start } from 'pixi';
 
-import "./index.scss";
+import './index.scss';
 
 export const App = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -18,4 +18,4 @@ export const App = () => {
 
   return <div ref={ref} />;
 };
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

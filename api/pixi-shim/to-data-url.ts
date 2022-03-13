@@ -1,5 +1,5 @@
-const PIXI = require("./pixi");
-import { createCanvas, loadImage, Image } from "canvas";
+const PIXI = require('./pixi');
+import { createCanvas, loadImage, Image } from 'canvas';
 
 import type { Application } from 'pixi.js';
 
@@ -17,24 +17,20 @@ module.exports.createView = function createView(width: number, height: number) {
 export async function createSprite(source: string) {
   const image = await loadImage(source);
   const canvas = createCanvas(image.width, image.height);
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext('2d');
 
   ctx.drawImage(image, 0, 0);
 
-  const baseTexture = PIXI.BaseTexture.fromBuffer(
-    canvas.toBuffer(),
-    canvas.width,
-    canvas.height
-  );
+  const baseTexture = PIXI.BaseTexture.fromBuffer(canvas.toBuffer(), canvas.width, canvas.height);
   const texture = new PIXI.Texture(baseTexture);
   const sprite = new PIXI.Sprite(texture);
 
   return sprite;
-};
+}
 
 // saves view to data url
 export function toDataURL(app: Application) {
-  const ctx = app.view.getContext("2d");
+  const ctx = app.view.getContext('2d');
 
   // iterate over children
   app.stage.children.forEach((child) => {
@@ -51,12 +47,12 @@ export function toDataURL(app: Application) {
       ctx.drawImage(
         image,
         child.x - child.anchor.x * child.width,
-        child.y - child.anchor.y * child.height
+        child.y - child.anchor.y * child.height,
       );
     }
   });
 
-  const base64 = app.view.toDataURL("image/png");
+  const base64 = app.view.toDataURL('image/png');
 
   return base64;
-};
+}
