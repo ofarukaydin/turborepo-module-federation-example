@@ -7,19 +7,15 @@ interface PixiDraggable extends PIXI.DisplayObject {
   dragging: boolean;
 }
 
-export const createSquare = (width: number, height: number, color: number): PIXI.Graphics | undefined => {
+export const createSquare = (width: number, height: number, color: number): PIXI.Graphics => {
   const viewport = store.getState().viewport
-
-  if (!viewport) {
-    return
-  }
 
   const square = new PIXI.Graphics();
   square.beginFill(color);
   square.drawRect(0, 0, width, height);
   square.endFill();
-  square.x = viewport.worldWidth / 2;
-  square.y = viewport.worldHeight / 2;
+  square.x = viewport!.worldWidth / 2;
+  square.y = viewport!.worldHeight / 2;
   square.interactive = true;
   square.buttonMode = true;
 

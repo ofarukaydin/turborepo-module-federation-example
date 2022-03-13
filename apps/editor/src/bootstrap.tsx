@@ -1,7 +1,7 @@
-import React, { StrictMode } from "react";
+import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
 
-import { App } from "./App";
+import { App } from "./app";
 
 export const render = (ref: HTMLElement) =>
   ReactDOM.render(

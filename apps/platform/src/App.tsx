@@ -1,6 +1,6 @@
-import React, { lazy, Suspense, useEffect, useRef } from "react";
-import { Button, ChakraProvider } from "@chakra-ui/react";
-import { Buttons } from "./components/buttons";
+import { Suspense, useEffect, useRef } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Topbar } from "ui";
 import ReactDOM from "react-dom";
 import { StoreProvider } from "store_mf/exports";
 import { render } from "editor/bootstrap";
@@ -17,7 +17,7 @@ export function App() {
   return (
     <StoreProvider>
       <ChakraProvider>
-        <Buttons />
+        <Topbar />
         <Suspense fallback={<div>Loading...</div>}>
           <div ref={editorRef} />
         </Suspense>

@@ -17,8 +17,11 @@ function createRenderer(ref: HTMLElement) {
 
   ref.appendChild(renderer.view)
   renderer.view.style.position = 'fixed'
-  renderer.view.style.background = 'rgba(0,0,0,.1)'
-
+  renderer.view.style.background = 'rgba(82, 78, 183, 1)'
+  renderer.view.style.width = '100vw'
+  renderer.view.style.height = '100vh'
+  renderer.view.style.top = '100'
+  renderer.view.style.left = '0'
   store.dispatch(setRenderer(renderer))
 
 }

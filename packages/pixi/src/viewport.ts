@@ -1,6 +1,4 @@
-// import { Viewport } from 'pixi-viewport' // use with modern build toolchain
 import { Viewport } from 'pixi-viewport'
-import { createSquare } from './createSquare'
 import * as PIXI from 'pixi.js'
 import { setViewport, store } from 'store_mf/exports'
 
