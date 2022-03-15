@@ -22,6 +22,7 @@ function createRenderer(ref: HTMLElement) {
   renderer.view.style.height = '100vh';
   renderer.view.style.top = '100';
   renderer.view.style.left = '0';
+
   store.dispatch(setRenderer(renderer));
 }
 

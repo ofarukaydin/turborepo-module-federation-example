@@ -7,6 +7,14 @@ interface PixiDraggable extends PIXI.DisplayObject {
   dragging: boolean;
 }
 
+export const attachEventHandlers = (node: PIXI.Graphics) => {
+  return node
+    .on('pointerdown', onDragStart)
+    .on('pointerup', onDragEnd)
+    .on('pointerupoutside', onDragEnd)
+    .on('pointermove', onDragMove);
+};
+
 export const createSquare = (width: number, height: number, color: number): PIXI.Graphics => {
   const viewport = store.getState().viewport;
 
@@ -19,11 +27,7 @@ export const createSquare = (width: number, height: number, color: number): PIXI
   square.interactive = true;
   square.buttonMode = true;
 
-  square
-    .on('pointerdown', onDragStart)
-    .on('pointerup', onDragEnd)
-    .on('pointerupoutside', onDragEnd)
-    .on('pointermove', onDragMove);
+  attachEventHandlers(square)
 
   return square;
 };

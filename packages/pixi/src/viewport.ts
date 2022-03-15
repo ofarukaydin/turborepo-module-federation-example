@@ -141,6 +141,7 @@ export function createViewport(renderer: PIXI.Renderer) {
   // fit and center the world into the panel
   viewport.fit();
   viewport.moveCenter(WORLD_WIDTH / 2, WORLD_HEIGHT / 2);
+
   // viewport.addEventListener('click', function handleClick(e: FederatedPointerEvent) {
   //     const viewport = e.currentTarget as Viewport
   //     viewport.children.forEach(child => {
@@ -159,30 +160,3 @@ export function createViewport(renderer: PIXI.Renderer) {
 
   store.dispatch(setViewport(viewport));
 }
-
-// export const isPointWithinRectangle = (point: Point, bounds: Rectangle): boolean => (
-//     bounds.x <= point.x && point.x <= bounds.x + bounds.width
-//     && bounds.y <= point.y && point.y <= bounds.y + bounds.height
-// );
-
-// export const findNodesByPoint = (nodes: NodeMap, point: Point, allNodes: NodeMap): Node[] => {
-//     const resultNodes = Object
-//         .values(nodes)
-//         .filter((node) => (
-//             node.type === 'node' && isPointWithinRectangle(point, {
-//                 x1: node.absoluteX,
-//                 y1: node.absoluteY,
-//                 x2: node.absoluteX + node.width,
-//                 y2: node.absoluteY + node.height,
-//             })
-//         ));
-
-//     const items = resultNodes.map((node) => ({
-//         node,
-//         depth: computeDepth(node, allNodes) + ((node.zIndex || 0) * 0.0001),
-//     }));
-
-//     items.sort((a, b) => a.depth - b.depth);
-
-//     return items.map(item => item.node);
-// };
